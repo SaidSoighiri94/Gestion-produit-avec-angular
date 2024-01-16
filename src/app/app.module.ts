@@ -10,6 +10,7 @@ import { AddProduitComponent } from './add-produit/add-produit.component';
 
 //Importation de Formsmodul pour pouvoir utiliser le ngModel(Two-way binding)
 import { FormsModule } from '@angular/forms';
+import { UpdateProduitComponent } from './update-produit/update-produit.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { FormsModule } from '@angular/forms';
     
     ProduitsComponent,
     AddProduitComponent,
+    UpdateProduitComponent,
 
   ],
   imports: [

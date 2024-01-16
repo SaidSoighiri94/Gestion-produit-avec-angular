@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ProduitsComponent } from './produits/produits.component';
 import { AddProduitComponent } from './add-produit/add-produit.component';
+import { UpdateProduitComponent } from './update-produit/update-produit.component';
 
 
 
@@ -13,8 +14,12 @@ const routes: Routes = [
   // Ajout du routing de add-aproduit
   {path : "add-produit",component : AddProduitComponent},
 
+  //Route pour update-produit 
+  {path: "updateProduit/:id", component: UpdateProduitComponent },
+  
   //Ajout d'un routing par defaut 
   {path : "",redirectTo:"produits", pathMatch :"full"}
+  
 ]; 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

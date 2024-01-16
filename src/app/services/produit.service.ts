@@ -6,7 +6,7 @@ import { Produit } from '../model/produit.model';
 })
 export class ProduitService {
   produits : Produit[]; //un tableau de Produi
-
+  produit! :Produit;
   constructor() { 
     this.produits = [
       { idProduit:1, nomProduit:"Pc Asus", prixProduit:4600, dateCreation: new Date("12-23-2023")},
@@ -29,5 +29,12 @@ export class ProduitService {
     if(index > -1) {
       this.produits.splice(index,1);
     }
+  }
+
+  //Ajout d'une methode consulter produit
+  consulterProduit(id: number):Produit{
+    this.produit = this.produits.find(p=>p.idProduit ==id)!;
+    return this.produit;
+
   }
 }
