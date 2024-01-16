@@ -22,4 +22,12 @@ export class ProduitService {
   ajouterProduit(produit : Produit){
     this.produits.push(produit);
   }
+  supprimerProduit(prod: Produit){
+    //Supprimer le produit du tableau 
+
+    const index = this.produits.indexOf(prod, 0);
+    if(index > -1) {
+      this.produits.splice(index,1);
+    }
+  }
 }

@@ -32,4 +32,11 @@ export class ProduitsComponent implements OnInit {
     // Initialisation de la variable 'produits' en utilisant le service pour récupérer la liste de produits
     this.produits = this.produitService.listeProduit();
   }
+  supprimerProduit(p: Produit){
+    //console.log(p);
+    //utilsation de confirm avant suppression
+    let conf = confirm("Êtes- vous sur de vouloir supprimer ce produit ?");
+    if(conf)    
+    this.produitService.supprimerProduit(p);
+  }
 }
