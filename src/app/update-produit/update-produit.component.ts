@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Produit } from '../model/produit.model';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ProduitService } from '../services/produit.service';
 
 @Component({
@@ -12,7 +12,8 @@ export class UpdateProduitComponent implements OnInit {
   currentProduit = new Produit();
 
   constructor(private activatedRoute: ActivatedRoute,
-    private produitService: ProduitService) { }
+              private router :Router,
+              private produitService: ProduitService) { }
 
   ngOnInit(): void {
     console.log(this.activatedRoute.snapshot.params['id']);
@@ -23,7 +24,8 @@ export class UpdateProduitComponent implements OnInit {
   //methode update produit
   updateProduit(){
     //console.log(this.currentProduit);
-    this.produitService.updateProduit(this.currentProduit)
+    this.produitService.updateProduit(this.currentProduit);
+    this.router.navigate(["produits"]);
   }
 
 }
