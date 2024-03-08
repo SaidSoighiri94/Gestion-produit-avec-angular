@@ -5,19 +5,29 @@
     <form>
         <div class="col-sm-2 col-md-2 col-lg-2 mb-4">
             <label for="idProduit">ID</label>
-            <input type="number" name="idProduit"  class="form-control" id="idProduit" [(ngModel)]="newProduit.idProduit" >
+            <input type="number" name="idProduit" class="form-control" id="idProduit"
+                [(ngModel)]="newProduit.idProduit">
         </div>
         <div class="col-sm-4 col-md-4 col-lg-4 mb-4">
             <label for="nomProduit">Nom Produit</label>
-            <input type="text" name="nomProduit" class="form-control" id="nomProduit" [(ngModel)]="newProduit.nomProduit" placeholder="Saisissez le nom du produit" >
+            <input type="text" name="nomProduit" class="form-control" id="nomProduit"
+                [(ngModel)]="newProduit.nomProduit" placeholder="Saisissez le nom du produit">
         </div>
         <div class="col-sm-2 col-md-2 col-lg-2 mb-4">
             <label for="prixProduit">Prix </label>
-            <input type="number" name="prixProduit" [(ngModel)]="newProduit.prixProduit" id="prixProduit" class="form-control" placeholder="Prix en €" >
+            <input type="number" name="prixProduit" [(ngModel)]="newProduit.prixProduit" id="prixProduit"
+                class="form-control" placeholder="Prix en €">
         </div>
         <div class="col-sm-4 col-md-4 col-lg-4">
             <label for="dateCreation"> Date création </label>
-            <input type="date" name="dateCreation" id="dateCreation" class="form-control" [(ngModel)]="newProduit.dateCreation" placeholder="choisissez une date">
+            <input type="date" name="dateCreation" id="dateCreation" class="form-control"
+                [(ngModel)]="newProduit.dateCreation" placeholder="choisissez une date">
+        </div>
+        <div class="col-sm-4 col-md-4 col-lg-4">
+            <label for="categorie">Categorie</label>
+            <select class="form-control" name="idCat" id="idCat" [(ngModel)]="newIdCat">
+                <option *ngFor="let categorie of categories" [value]="categorie.idCat">{{categorie.nomCat}}</option>
+            </select>
         </div>
         <div class="mt-4">
             <button type="submit" (click)="addProduit()" class="ml-3 btn btn-success">Ajouter</button>

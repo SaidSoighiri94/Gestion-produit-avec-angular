@@ -8,20 +8,26 @@ import { Categorie } from '../model/categorie.model';
 export class ProduitService {
   produits: Produit[]; //un tableau de Produits
   produit!: Produit;
-  categories : Categorie[];  // un Tableau de categorie 
+  categories: Categorie[];  // un Tableau de categorie 
   constructor() {
     this.categories = [
-      {idCat : 1, nomCat: "Pc"},
-      {idCat: 1, nomCat : "Imprimante"}
+      { idCat: 1, nomCat: "Pc" },
+      { idCat: 1, nomCat: "Imprimante" }
     ];
 
     this.produits = [
-      { idProduit: 1, nomProduit: "Pc Asus", prixProduit: 4600, dateCreation: new Date("12-23-2023"),
-      categorie : {idCat : 1, nomCat : "PC"}},
-      { idProduit: 2, nomProduit: "Samsung Tablette", prixProduit: 2333, dateCreation: new Date("11/16/2020"),
-      categorie : {idCat :1,nomCat : "Pc"} },
-      { idProduit: 3, nomProduit: "Imprimante Epson", prixProduit: 450, dateCreation: new Date("12/17/2010"), 
-      categorie: {idCat : 2, nomCat : "Imprimante"} }
+      {
+        idProduit: 1, nomProduit: "Pc Asus", prixProduit: 4600, dateCreation: new Date("12-23-2023"),
+        categorie: { idCat: 1, nomCat: "PC" }
+      },
+      {
+        idProduit: 2, nomProduit: "Samsung Tablette", prixProduit: 2333, dateCreation: new Date("11/16/2020"),
+        categorie: { idCat: 1, nomCat: "Pc" }
+      },
+      {
+        idProduit: 3, nomProduit: "Imprimante Epson", prixProduit: 450, dateCreation: new Date("12/17/2010"),
+        categorie: { idCat: 2, nomCat: "Imprimante" }
+      }
     ];
   }
 
@@ -47,15 +53,8 @@ export class ProduitService {
     // return this.produit;
 
   }
-  updateProduit(p: Produit) {
-    this.supprimerProduit(p);
-    this.ajouterProduit(p);
-    this.trierProduits();
-    
-  }
-
-  trierProduits(){                        // Ajout d'une methode de tri des produits
-    this.produits =this.produits.sort((n1,n2) =>{
+  trierProduits() {                        // Ajout d'une methode de tri des produits
+    this.produits = this.produits.sort((n1, n2) => {
       if (n1.idProduit! > n2.idProduit!) {
         return 1
       }
@@ -64,7 +63,19 @@ export class ProduitService {
       }
       return 0;
     });
+  }
 
+  updateProduit(p: Produit) {
+    this.supprimerProduit(p);
+    this.ajouterProduit(p);
+    this.trierProduits();
+  }
 
+  // Ajout de la listes des categorie dans le menu deroulant
+  listeCategories():Categorie[] {
+    return this.categories;
+  }
+  consulterCategorie(idCat:number): Categorie{
+    return this.categories.find(cat => cat.idCat ==idCat)!;
   }
 }
