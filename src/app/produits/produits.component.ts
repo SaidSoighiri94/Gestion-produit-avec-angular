@@ -30,7 +30,12 @@ export class ProduitsComponent implements OnInit {
   ngOnInit(): void {
    
     // Initialisation de la variable 'produits' en utilisant le service pour récupérer la liste de produits
-    this.produits = this.produitService.listeProduit();
+    //this.produits = this.produitService.listeProduit();
+
+    this.produitService.listeProduit().subscribe( prods => {
+      console.log(prods);
+      this.produits = prods;
+    })
   }
   supprimerProduit(p: Produit){
     //console.log(p);

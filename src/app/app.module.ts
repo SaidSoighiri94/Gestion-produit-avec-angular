@@ -12,6 +12,8 @@ import { AddProduitComponent } from './add-produit/add-produit.component';
 import { FormsModule } from '@angular/forms';
 import { UpdateProduitComponent } from './update-produit/update-produit.component';
 
+import {HttpClientModule} from '@angular/common/http';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,7 +26,8 @@ import { UpdateProduitComponent } from './update-produit/update-produit.componen
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule //Ajout du formsModul a la rubrique import 
+    FormsModule,               // Ajout du formsModul a la rubrique import 
+    HttpClientModule           // import de HttpClientModule pour la cosnsomation de nos apiRest 
   ],
   providers: [],
   bootstrap: [AppComponent]
