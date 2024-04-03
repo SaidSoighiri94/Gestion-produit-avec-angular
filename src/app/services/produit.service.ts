@@ -60,14 +60,22 @@ export class ProduitService {
     return this.http.post<Produit>(this.apiURL+"/addProduit", prod, httpOptions);
   }
 
-  supprimerProduit(prod: Produit) {
-    //Supprimer le produit du tableau 
+  /*supprimerProduit(prod: Produit) {
 
+    //Supprimer le produit du tableau 
     const index = this.produits.indexOf(prod, 0);
     if (index > -1) {
       this.produits.splice(index, 1);
     }
-  }
+  }*/
+
+  // Methode de suppression de produit
+  supprimerProduit(idProduit:number){
+    const url = `${this.apiURL}/delete/${idProduit}`;
+    return this.http.delete(url,httpOptions);
+
+  } 
+
 
   //Ajout d'une methode consulter produit
   consulterProduit(id: number): Produit {
@@ -88,9 +96,9 @@ export class ProduitService {
   }
 
   updateProduit(p: Produit) {
-    this.supprimerProduit(p);
+    /*this.supprimerProduit(p);
     this.ajouterProduit(p);
-    this.trierProduits();
+    this.trierProduits();*/
   }
 
   // Ajout de la listes des categorie dans le menu deroulant

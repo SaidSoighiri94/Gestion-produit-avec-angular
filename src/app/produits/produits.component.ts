@@ -35,13 +35,25 @@ export class ProduitsComponent implements OnInit {
     this.produitService.listeProduit().subscribe( prods => {
       console.log(prods);
       this.produits = prods;
-    })
+    });
+    this.chargerProduits();
   }
+
+  // Methode chargerProduit 
+  chargerProduits(){
+    this.produitService.listeProduit().subscribe(prods =>{
+      console.log(prods);
+      this.produits = prods;
+    } );
+  }
+  
+  //methode supprimer produit 
   supprimerProduit(p: Produit){
-    //console.log(p);
-    //utilsation de confirm avant suppression
-    let conf = confirm("Êtes- vous sur de vouloir supprimer ce produit ?");
-    if(conf)    
-    this.produitService.supprimerProduit(p);
+    let conf = confirm("Voulez vous vraiment supprimer ?");
+    if(conf && p.idProduit !== undefined) 
+    this.produitService.supprimerProduit(p.idProduit).subscribe(() => {
+      console.log("produit supprimé");
+      this.chargerProduits();
+    });
   }
 }
