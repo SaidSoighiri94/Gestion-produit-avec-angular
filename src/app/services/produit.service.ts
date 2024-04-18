@@ -60,15 +60,6 @@ export class ProduitService {
     return this.http.post<Produit>(this.apiURL+"/addProduit", prod, httpOptions);
   }
 
-  /*supprimerProduit(prod: Produit) {
-
-    //Supprimer le produit du tableau 
-    const index = this.produits.indexOf(prod, 0);
-    if (index > -1) {
-      this.produits.splice(index, 1);
-    }
-  }*/
-
   // Methode de suppression de produit
   supprimerProduit(idProduit:number){
     const url = `${this.apiURL}/delete/${idProduit}`;
@@ -76,14 +67,13 @@ export class ProduitService {
 
   } 
 
-
-  //Ajout d'une methode consulter produit
-  consulterProduit(id: number): Produit {
-    return this.produit = this.produits.find(p => p.idProduit == id)!;
-    // return this.produit;
-
+  //Methode permettant de consulter produit
+  consulterProduit(id: number): Observable<Produit> {
+    const url =`${this.apiURL}/produitCat/{idCat}`;
+    return this.http.get<Produit>(url)
   }
-  trierProduits() {                        // Ajout d'une methode de tri des produits
+  // Methode pour le trie des donnees
+  trierProduits() {                        // Ajout d'une methode pour le trie des produits
     this.produits = this.produits.sort((n1, n2) => {
       if (n1.idProduit! > n2.idProduit!) {
         return 1
@@ -94,13 +84,11 @@ export class ProduitService {
       return 0;
     });
   }
+  // Methode permettant la modification d'un produit 
+  updateProduit( prod : Produit) : Observable<Produit> {
+    return this.http.put<Produit>(this.apiURL+"/updateProduit",prod,httpOptions);
 
-  updateProduit(p: Produit) {
-    /*this.supprimerProduit(p);
-    this.ajouterProduit(p);
-    this.trierProduits();*/
   }
-
   // Ajout de la listes des categorie dans le menu deroulant
   /*listeCategories():Categorie[] {
     return this.categories;
