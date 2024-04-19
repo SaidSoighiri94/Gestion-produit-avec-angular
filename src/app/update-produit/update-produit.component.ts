@@ -13,17 +13,17 @@ export class UpdateProduitComponent implements OnInit {
   currentProduit = new Produit();
 
   // Ajout des champs de categorie 
-  categories! : Categorie[];
-  updatedCatId! : number;
+  categories!: Categorie[];
+  updatedCatId!: number;
 
   constructor(private activatedRoute: ActivatedRoute,
-              private router :Router,
-              private produitService: ProduitService) { }
+    private router: Router,
+    private produitService: ProduitService) { }
 
   ngOnInit(): void {
-   // console.log(this.activatedRoute.snapshot.params['id']);
+    // console.log(this.activatedRoute.snapshot.params['id']);
     //this.categories = this.produitService.listeCategories();
-    this.produitService.consulterProduit(this.activatedRoute.snapshot.params['id']).subscribe( prod => {
+    this.produitService.consulterProduit(this.activatedRoute.snapshot.params['id']).subscribe(prod => {
       this.currentProduit = prod;
     });
 
@@ -31,11 +31,11 @@ export class UpdateProduitComponent implements OnInit {
     //console.log(this.currentProduit);
   }
 
-  //methode update produit
-  updateProduit(){
-    //this.currentProduit.categorie = this.produitService.consulterCategorie(this.updatedCatId);
-    this.produitService.updateProduit(this.currentProduit);
-    this.router.navigate(["produits"]);
+  // Methode update produit
+  updateProduit() {
+    this.produitService.updateProduit(this.currentProduit).subscribe(prod => {
+      this.router.navigate(['produits']);
+    });
   }
 
 }
