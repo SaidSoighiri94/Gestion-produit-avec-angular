@@ -19,12 +19,12 @@
             <label for="dateCreation"> Date création </label>
             <input type="date" name="dateCreation" id="dateCreation" class="form-control" [ngModel]="currentProduit.dateCreation | date: 'yyyy-MM-dd' " (ngModelChange)="currentProduit.dateCreation = $event" placeholder="choisissez une date">
         </div>
-        <!--div class="col-sm-4 col-md-4 col-lg-4">
+        <div class="col-sm-4 col-md-4 col-lg-4 mt-4">
             <label for="categorie"> Categorie</label>
             <select name="idCat" id="idCat" [(ngModel)]="updatedCatId" class="form-control">
                 <option *ngFor="let categorie of categories"  [value]="categorie.idCat">{{categorie.nomCat}} </option>
             </select>
-        </div-->
+        </div>
 
         <div class="mt-4">
             <button type="submit" (click)="updateProduit()" class="ml-3 btn btn-success">Modifier</button>

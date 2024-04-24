@@ -20,35 +20,11 @@ export class ProduitService {
   produits!: Produit[]; //un tableau de Produits
   produit!: Produit;
 
-  /*categories: Categorie[];  // un Tableau de categorie*/
+  categories!: Categorie[];  // un Tableau de categorie*/
 
   // Injection du service HttpClient pour effectuer des requêtes HTTP
   constructor(private http: HttpClient) {
-    /* this.categories = [
-      { idCat: 1, nomCat: "PC" },
-      { idCat: 2, nomCat: "Imprimante" }
-    ];*/
-
-    /* this.produits = [
-      {
-        idProduit: 1, nomProduit: "Pc Asus", prixProduit: 4600, dateCreation: new Date("12-23-2023"),
-        categorie: { idCat: 1, nomCat: "Pc" }
-      },
-      {
-        idProduit: 2, nomProduit: "Samsung Tablette", prixProduit: 2333, dateCreation: new Date("11/16/2020"),
-        categorie: { idCat: 1, nomCat: "Pc" }
-      },
-      {
-        idProduit: 3, nomProduit: "Imprimante Epson", prixProduit: 450, dateCreation: new Date("12/17/2010"),
-        categorie: { idCat: 2, nomCat: "Imprimante" }
-      }
-    ]; */
   }
-
-  // on va creer une methode qui va qui va nous retourner un tablea de produit
-  /*listeProduit(): Produit[] {
-    return this.produits;
-  }*/
 
   // Méthode pour récupérer la liste des produits depuis l'API
   listeProduit(): Observable<Produit[]> {
@@ -90,11 +66,9 @@ export class ProduitService {
     return this.http.put<Produit>(this.apiURL + "/updateProduit", prod, httpOptions);
 
   }
-  // Ajout de la listes des categorie dans le menu deroulant
-  /*listeCategories():Categorie[] {
-    return this.categories;
+  // Methode qui affiche la liste categorie des  produits
+  listeCategorie(): Observable<Categorie[]>{
+    return this.http.get<Categorie[]>(this.apiURL + "/categorie/listCategories");
   }
-  consulterCategorie(idCat:number): Categorie{
-    return this.categories.find(cat => cat.idCat ==idCat)!;
-  }*/
+ 
 }
