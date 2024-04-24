@@ -16,16 +16,9 @@ export class AddProduitComponent implements OnInit {
   newCategorie!: Categorie;
   constructor(private produitService: ProduitService,
     private router: Router) { }
-  /*addProduit() {
-    console.log(this.newIdCat);
-    //this.newCategorie = this.produitService.consulterCategorie(this.newIdCat);
-    this.produitService.ajouterProduit(this.newProduit);
-    this.newProduit.categorie = this.newCategorie;      // Pour ajouter la nouvelle categorie qu'on vient de creer dans notre notre objet newProduit
-    this.message = "Produit " + this.newProduit.nomProduit + " ajouté avec succés";
-    this.router.navigate(['produits']);
-  }*/
 
   addProduit(){
+    this.newProduit.categorie = this.categories.find(cat => cat.idCat == this.newIdCat)!;
     this.produitService.ajouterProduit(this.newProduit)
     .subscribe(prod => {
     console.log(prod);

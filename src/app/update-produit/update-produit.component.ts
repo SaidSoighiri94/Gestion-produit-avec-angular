@@ -21,8 +21,9 @@ export class UpdateProduitComponent implements OnInit {
     private produitService: ProduitService) { }
 
   ngOnInit(): void {
-    // console.log(this.activatedRoute.snapshot.params['id']);
-    //this.categories = this.produitService.listeCategories();
+    this.produitService.listeCategorie().subscribe(cat =>{this.categories = cat;
+      console.log(cat)
+    } )
     this.produitService.consulterProduit(this.activatedRoute.snapshot.params['id']).subscribe(prod => {
       this.currentProduit = prod;
     });
