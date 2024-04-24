@@ -35,7 +35,9 @@ export class AddProduitComponent implements OnInit {
   
 
   ngOnInit(): void {
-    //this.categories = this.produitService.listeCategories();
+    this.produitService.listeCategorie().subscribe(categorie=>{this.categories=categorie;
+      console.log(categorie);
+    })
   }
 
 }
