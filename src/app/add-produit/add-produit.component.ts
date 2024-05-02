@@ -28,8 +28,8 @@ export class AddProduitComponent implements OnInit {
   
 
   ngOnInit(): void {
-    this.produitService.listeCategorie().subscribe(categorie=>{this.categories=categorie;
-      console.log(categorie);
+    this.produitService.listeCategories().subscribe(categorie => {console.log(categorie);
+      this.categories = categorie._embedded.categories;
     })
   }
 
