@@ -13,6 +13,8 @@ import { FormsModule } from '@angular/forms';
 import { UpdateProduitComponent } from './update-produit/update-produit.component';
 
 import {HttpClientModule} from '@angular/common/http';
+import { RchercheParCategorieComponent } from './recherche-par-categorie/recherche-par-categorie.component';
+import { RechercheParNomComponent } from './recherche-par-nom/recherche-par-nom.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +23,8 @@ import {HttpClientModule} from '@angular/common/http';
     ProduitsComponent,
     AddProduitComponent,
     UpdateProduitComponent,
+    RchercheParCategorieComponent,
+    RechercheParNomComponent,
 
   ],
   imports: [

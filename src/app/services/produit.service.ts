@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { Produit } from '../model/produit.model';
 import { Categorie } from '../model/categorie.model';
 import { Observable } from 'rxjs';
-//import { HttpClient,HttpHeaders } from '@angular/common/http';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { apiURL, apiURLCat } from '../config';
 import { CategorieWrapped } from '../model/CategorieWrapped.model';
@@ -68,15 +67,16 @@ export class ProduitService {
     return this.http.put<Produit>(apiURL + "/updateProduit", prod, httpOptions);
 
   }
-  // Methode qui affiche la liste categorie des  produits
-  /*listeCategorie(): Observable<Categorie[]>{
-    return this.http.get<Categorie[]>(apiURL + "/categorie/listCategories");
-  }*/
 
   //Utilisation de la classe CategorieWrapped
 
   listeCategories():Observable<CategorieWrapped>{
     return this.http.get<CategorieWrapped>(apiURLCat);
     }
- 
+ // Methode recher par categorie 
+ rechercheParCategorie(idCat:number):Observable<Produit[]>{
+  const url = `${apiURL}/produitCat/${idCat}`;
+  return this.http.get<Produit[]>(url);
+
+ }
 }
