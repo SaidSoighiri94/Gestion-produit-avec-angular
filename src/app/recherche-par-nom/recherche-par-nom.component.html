@@ -1,12 +1,24 @@
 <div class="container">
 
-    <form  class="form-inline">
+<!--Recherche par nom avec eventKeyUp()-->
+<form class="form-iline">
+    <div class="form-group mx-sm-3 mb-2 mt-2">
+        <label for="nomProduit" class="form-label">Nom produit </label>
+        <input type="text" class="form-control" #searchTerm (keyup)="onKeyUp(searchTerm.value)">
+    </div>
+</form>
+
+
+
+
+    <!-- La reherche par nom
+        form  class="form-inline">
         <div class="form-group mx-sm-3 mt-2">
             <label class="fom-label">Nom produit</label>
             <input type="text" name="nomProduit" id="nomPoduit" class="form-control" [(ngModel)]="nomProduit">
             <button type="submit" (click)="rechercherProduits()" class="btn btn-primary mb-2 ml-2" >Rechercher</button>
         </div>
-    </form>
+    </form-->
     <div class="card shadow">
         <div class="card-body">
             <table class="table table-striped">
