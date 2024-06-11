@@ -12,13 +12,15 @@ export class RechercheParNomComponent implements OnInit {
   nomProduit!: string;
   produits!: Produit[];
   allProduits!: Produit[];
+  searchTerm!: string;
 
   constructor(private produitService: ProduitService) { }
 
   ngOnInit(): void {
     this.produitService.listeProduit().subscribe(produit => {
       console.log(produit);
-      this.allProduits = produit;
+      // this.allProduits = produit;  on remplace par la ligne suivante 
+      this.produits = produit;
     });
   }
 

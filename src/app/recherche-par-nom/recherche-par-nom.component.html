@@ -1,12 +1,19 @@
 <div class="container">
 
+    <form  class="fom-line">
+        <div class="form-group mx-sm-3 mb-2 mt-2">
+            <label for="nomProduit">Nom produit</label>
+            <input type="text" class="form-control" #nomProduit [(ngModel)]="searchTerm" name="searchTerm">
+        </div>
+    </form>
+
 <!--Recherche par nom avec eventKeyUp()-->
-<form class="form-iline">
+<!--form class="form-iline">
     <div class="form-group mx-sm-3 mb-2 mt-2">
         <label for="nomProduit" class="form-label">Nom produit </label>
         <input type="text" class="form-control" #searchTerm (keyup)="onKeyUp(searchTerm.value)">
     </div>
-</form>
+</form-->
 
 
 
@@ -33,7 +40,7 @@
 
                     </tr>
                 </thead>
-                <tbody *ngFor="let produit of produits">
+                <tbody *ngFor="let produit of produits | searchFilter:searchTerm">
                     <tr>
                         <td> {{produit.idProduit}} </td>
                         <td> {{produit.nomProduit}} </td>
