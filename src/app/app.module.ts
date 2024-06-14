@@ -16,6 +16,7 @@ import {HttpClientModule} from '@angular/common/http';
 import { RchercheParCategorieComponent } from './recherche-par-categorie/recherche-par-categorie.component';
 import { RechercheParNomComponent } from './recherche-par-nom/recherche-par-nom.component';
 import { SearchFilterPipe } from './search-filter.pipe';
+import { ListeCategoriesComponent } from './liste-categories/liste-categories.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { SearchFilterPipe } from './search-filter.pipe';
     RchercheParCategorieComponent,
     RechercheParNomComponent,
     SearchFilterPipe,
+    ListeCategoriesComponent,
 
   ],
   imports: [

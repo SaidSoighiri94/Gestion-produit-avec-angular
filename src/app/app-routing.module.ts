@@ -5,6 +5,7 @@ import { AddProduitComponent } from './add-produit/add-produit.component';
 import { UpdateProduitComponent } from './update-produit/update-produit.component';
 import { RchercheParCategorieComponent } from './recherche-par-categorie/recherche-par-categorie.component';
 import { RechercheParNomComponent } from './recherche-par-nom/recherche-par-nom.component';
+import { ListeCategoriesComponent } from './liste-categories/liste-categories.component';
 
 
 
@@ -22,7 +23,8 @@ const routes: Routes = [
   {path:"rechercheParCategorie", component: RchercheParCategorieComponent},
   {path:"rechercheParNom", component:RechercheParNomComponent},
   //Ajout d'un routing par defaut 
-  {path : "",redirectTo:"produits", pathMatch :"full"}
+  {path : "",redirectTo:"produits", pathMatch :"full"},
+  {path :"listeCategorie",component: ListeCategoriesComponent}
   
 ]; 
 @NgModule({
