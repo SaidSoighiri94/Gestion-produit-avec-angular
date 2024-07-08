@@ -17,6 +17,7 @@ import { RchercheParCategorieComponent } from './recherche-par-categorie/recherc
 import { RechercheParNomComponent } from './recherche-par-nom/recherche-par-nom.component';
 import { SearchFilterPipe } from './search-filter.pipe';
 import { ListeCategoriesComponent } from './liste-categories/liste-categories.component';
+import { UpdateCategorieComponent } from './update-categorie/update-categorie.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { ListeCategoriesComponent } from './liste-categories/liste-categories.co
     RechercheParNomComponent,
     SearchFilterPipe,
     ListeCategoriesComponent,
+    UpdateCategorieComponent,
 
   ],
   imports: [

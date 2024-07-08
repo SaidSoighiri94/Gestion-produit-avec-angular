@@ -3,7 +3,7 @@ import { Produit } from '../model/produit.model';
 import { Categorie } from '../model/categorie.model';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { apiURL, apiURLCat } from '../config';
+import { apiURL, apiURLCat, apiURLCategorie } from '../config';
 import { CategorieWrapped } from '../model/CategorieWrapped.model';
 
 // Options HTTP pour spécifier le type de contenu JSON
@@ -81,6 +81,10 @@ export class ProduitService {
  rechercherParNom(nomProduit:string):Observable<Produit[]>{
   const url = `${apiURL}/produitByName/${nomProduit}`;
   return this.http.get<Produit[]>(url);
+ }
 
+ //Appele de l'api ajout categorie
+ ajouterCategorie(categorie:Categorie):Observable<Categorie>{
+  return this.http.post<Categorie>(apiURLCat,categorie,httpOptions);
  }
 }
