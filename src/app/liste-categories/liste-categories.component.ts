@@ -10,6 +10,7 @@ import { Categorie } from '../model/categorie.model';
 })
 export class ListeCategoriesComponent implements OnInit {
   categories! : Categorie[];
+  ajout:boolean =true;
   updatedCat:Categorie = {"idCat":0,"nomCat":""};
 
   constructor( private produitSeverice: ProduitService) { }
@@ -29,5 +30,10 @@ export class ListeCategoriesComponent implements OnInit {
   categorieUpdated(categorie:Categorie){
     console.log("categrie recu deu composant updateCategorie",categorie);
     this.produitSeverice.ajouterCategorie(categorie).subscribe(()=>this.chargerCategorie())
+  }
+
+  updateCat(categorie:Categorie){
+    this.updatedCat = categorie;
+    this.ajout = false;
   }
 }

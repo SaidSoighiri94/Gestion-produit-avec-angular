@@ -12,6 +12,9 @@ export class UpdateCategorieComponent implements OnInit {
   @Input()
   categorie! :Categorie;
 
+  @Input()
+  ajout:boolean = true;
+
  @Output()
  categorieUpdated = new EventEmitter<Categorie>();
 
