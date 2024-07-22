@@ -13,7 +13,7 @@ export class UpdateCategorieComponent implements OnInit {
   categorie! :Categorie;
 
   @Input()
-  ajout:boolean;
+  ajout!:boolean;
 
  @Output()
  categorieUpdated = new EventEmitter<Categorie>();
