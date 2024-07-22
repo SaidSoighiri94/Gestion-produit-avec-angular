@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit {
     if(isValidUser)
     this.router.navigate(['/']);
     else
-    alert("Login ou mot de passe incorrect");
+    this.erreur =1;
 
   }
 

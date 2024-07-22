@@ -1,14 +1,20 @@
 <div class="container mt-5">
     <div class="row justify-contentmd-center">
         <div class="col-md-4">
+            <!--Alert -->
+            <div class="alert alert-danger" *ngIf="erreur == 1">
+                <strong>Login ou mot de passe incorrect...</strong>
+            </div>
             <form action="">
                 <div class="form-group">
                     <label for="username">Nom Utilisateur</label>
-                    <input type="text" name="username" class="form-control" [(ngModel)]="user.username"  placeholder="Entrer Votre Nom ... ">
+                    <input type="text" name="username" class="form-control" [(ngModel)]="user.username"
+                        placeholder="Entrer Votre Nom ... ">
                 </div>
                 <div class="form-group">
                     <label for="password">Mot de passe</label>
-                    <input type="password" class="form-control" name="password" [(ngModel)]="user.password" placeholder="Entrer Votre Mo de passe ..">
+                    <input type="password" class="form-control" name="password" [(ngModel)]="user.password"
+                        placeholder="Entrer Votre Mo de passe ..">
                 </div>
                 <div class="row justify-content-md-center" type="button" (click)="onLoggedIn()">
                     <button class="btn btn-success">
