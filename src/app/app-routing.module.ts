@@ -8,11 +8,12 @@ import { RechercheParNomComponent } from './recherche-par-nom/recherche-par-nom.
 import { ListeCategoriesComponent } from './liste-categories/liste-categories.component';
 import { LoginComponent } from './login/login.component';
 import { ForbiddenComponent } from './forbidden/forbidden.component';
+import { ProduitGuard } from './produit.guard';
 
 const routes: Routes = [
   {path : "produits", component : ProduitsComponent},                   // Ajout de la route qui permet d'acceder les produits
   {path : "add-produit",component : AddProduitComponent, 
-    canActivate:[ForbiddenComponent]},                                  // Ajout du routing de add-aproduit
+          canActivate:[ProduitGuard]},                                  // Ajout du routing de add-aproduit
   {path: "updateProduit/:id", component: UpdateProduitComponent },      //Route pour update-produit
   {path:"rechercheParCategorie", component: RchercheParCategorieComponent},
   {path:"rechercheParNom", component:RechercheParNomComponent},

@@ -53,4 +53,12 @@ export class AuthService {
     this.router.navigate(['/login']);
 
   }
+
+  setLoggeedUserFromLocaStorage(login: string){
+    this.loggedUser = login;
+    this.isLoggedIn = true,
+    this.getUserRoles(login);
+  }
+
+  
 }

@@ -19,9 +19,10 @@ export class ProduitGuard implements CanActivate {
     if(this.authService.isAdmin())
       return true;
     else {
-      this.router.navigate(['app-forbidden']);
+      this.router.navigate(['forbidden']);
       return false;
     }
+
   }
 
 }
