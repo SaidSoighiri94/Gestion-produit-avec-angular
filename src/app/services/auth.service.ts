@@ -35,4 +35,12 @@ export class AuthService {
     return validUser;
   }
 
+  // Methode isAdmin permettant d'afficher l'ajout des produits si on est admin
+  isAdmin():Boolean{
+    if(!this.roles){
+      return false;
+    }
+    return (this.roles.indexOf('ADMIN') >-1);
+  }
+
 }

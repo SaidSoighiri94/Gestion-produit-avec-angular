@@ -23,7 +23,7 @@
                 </a>
                 <div class="dropdown-menu">
                     <a class="dropdown-item"
-                        routerLink="/add-produit">Ajouter</a><!--Route pour afficher la page add-produit-->
+                        routerLink="/add-produit" *ngIf="authService.isAdmin()">Ajouter</a><!--Route pour afficher la page add-produit-->
                     <a class="dropdown-item" routerLink="/produits">Lister</a><!--Lister des produit-->
                     <a class="dropdown-item" routerLink="/rechercheParCategorie">Rechercher par Categorie</a>
                     <a href="#" class="dropdown-item" routerLink="/rechercheParNom">Rechercher par Nom</a>
