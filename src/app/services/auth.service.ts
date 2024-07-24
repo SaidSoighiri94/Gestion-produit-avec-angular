@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { User } from '../model/user.model';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +16,7 @@ export class AuthService {
   public isLoggedIn: Boolean = false;
   public roles!: string[];
 
-  constructor() { }
+  constructor(private router:Router) { }
 
   // Methode signIn permettant si l'utilisateur et mot de passe existent
   SignIn(users: User): Boolean {
@@ -42,5 +43,14 @@ export class AuthService {
     }
     return (this.roles.indexOf('ADMIN') >-1);
   }
+  //Methode de deconnexion
+  logout(){
+    this.isLoggedIn = false;
+    this.loggedUser = undefined!;
+    this.roles = undefined!;
+    localStorage.removeItem('loggedUser');
+    localStorage.setItem('isLoggedIn',String (this.isLoggedIn));
+    this.router.navigate(['/login']);
 
+  }
 }
