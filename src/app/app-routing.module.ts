@@ -7,25 +7,19 @@ import { RchercheParCategorieComponent } from './recherche-par-categorie/recherc
 import { RechercheParNomComponent } from './recherche-par-nom/recherche-par-nom.component';
 import { ListeCategoriesComponent } from './liste-categories/liste-categories.component';
 import { LoginComponent } from './login/login.component';
-
-
+import { ForbiddenComponent } from './forbidden/forbidden.component';
 
 const routes: Routes = [
-
-  // Ajout de la route qui permet d'acceder les produits
-  {path : "produits", component : ProduitsComponent},
-  
-  // Ajout du routing de add-aproduit
-  {path : "add-produit",component : AddProduitComponent},
-
-  //Route pour update-produit 
-  {path: "updateProduit/:id", component: UpdateProduitComponent },
-
+  {path : "produits", component : ProduitsComponent},                   // Ajout de la route qui permet d'acceder les produits
+  {path : "add-produit",component : AddProduitComponent, 
+    canActivate:[ForbiddenComponent]},                                  // Ajout du routing de add-aproduit
+  {path: "updateProduit/:id", component: UpdateProduitComponent },      //Route pour update-produit
   {path:"rechercheParCategorie", component: RchercheParCategorieComponent},
   {path:"rechercheParNom", component:RechercheParNomComponent},
-  //Ajout d'un routing par defaut 
-  {path : "",redirectTo:"produits", pathMatch :"full"},
+  
+  {path : "",redirectTo:"produits", pathMatch :"full"},                 //Ajout d'un routing par defaut 
   {path :"listeCategorie",component: ListeCategoriesComponent},
+  {path: "forbidden",component:ForbiddenComponent },
   {path: "login",component: LoginComponent}
   
 ]; 
