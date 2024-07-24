@@ -4,6 +4,7 @@ import { Component, OnInit } from '@angular/core';
 // Importation de nos classes et services personnalisés
 import { Produit } from '../model/produit.model';
 import { ProduitService } from '../services/produit.service';
+import { AuthService } from '../services/auth.service';
 
 // Décoration du composant avec un sélecteur et un chemin vers le template HTML
 @Component({
@@ -18,7 +19,7 @@ export class ProduitsComponent implements OnInit {
   produits? : Produit[];
 
   // Injection du service ProduitService dans le constructeur du composant
-  constructor(private produitService: ProduitService) { 
+  constructor(private produitService: ProduitService, public authService:AuthService) { 
     
     // On peut faire ca ou ajouter un ? dans l'attribut produit
     // this.produits = [];
