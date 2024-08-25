@@ -59,6 +59,12 @@ export class AuthService {
     this.isLoggedIn = true,
     this.getUserRoles(login);
   }
-
+  getUserRoles(username : string){
+    this.users.forEach((curUser) => {
+      if(curUser.username == username){
+        this.roles =curUser.roles;
+      }
+    });
+  }
   
 }
