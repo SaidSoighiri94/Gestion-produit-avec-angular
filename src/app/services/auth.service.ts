@@ -16,7 +16,7 @@ export class AuthService {
   public isLoggedIn: Boolean = false;
   public roles!: string[];
 
-  constructor(private router:Router) { }
+  constructor(private router: Router) { }
 
   // Methode signIn permettant si l'utilisateur et mot de passe existent
   SignIn(users: User): Boolean {
