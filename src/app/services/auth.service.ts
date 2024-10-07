@@ -1,25 +1,43 @@
+import { apiURL } from './../config';
 import { Injectable } from '@angular/core';
 import { User } from '../model/user.model';
 import { Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
+  apiUrlUsers = 'htt://localhost:9001/user'
+  token!:string;
+
   // Données en dure
-  users: User[] = [
+  /*users: User[] = [
     { "username": "admin", "password": "123", "roles": ['ADMIN'] },
     { "username": "mohamed", "password": "123", "roles": ['USER'] }
   ];
+  */
   public loggedUser!: string;
   public isLoggedIn: Boolean = false;
   public roles!: string[];
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private http:HttpClient) { }
+
+  login(user : User){
+    
+    return this.http.post<User>(apiURL+'/login',user,{observe:'response'});
+  }
+
+  saveToken(jwt:string){
+    localStorage.setItem('jwt',jwt);
+    this.token = jwt;
+    this.isLoggedIn = true;
+  }
+
 
   // Methode signIn permettant si l'utilisateur et mot de passe existent
-  SignIn(users: User): Boolean {
+  /*SignIn(users: User): Boolean {
     let validUser: Boolean = false;
 
     // Recherche grace au foreach
@@ -34,7 +52,7 @@ export class AuthService {
       }
     });
     return validUser;
-  }
+  }*/
 
   // Methode isAdmin permettant d'afficher l'ajout des produits si on est admin
   isAdmin():Boolean{
@@ -56,15 +74,15 @@ export class AuthService {
 
   setLoggeedUserFromLocaStorage(login: string){
     this.loggedUser = login;
-    this.isLoggedIn = true,
-    this.getUserRoles(login);
+    this.isLoggedIn = true;
+   // this.getUserRoles(login);
   }
-  getUserRoles(username : string){
+  /*getUserRoles(username : string){
     this.users.forEach((curUser) => {
       if(curUser.username == username){
         this.roles =curUser.roles;
       }
     });
-  }
+  }*/
   
 }
