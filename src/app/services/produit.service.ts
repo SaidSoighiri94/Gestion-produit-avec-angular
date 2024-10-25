@@ -1,3 +1,4 @@
+import { AuthService } from './auth.service';
 import { Injectable } from '@angular/core';
 import { Produit } from '../model/produit.model';
 import { Categorie } from '../model/categorie.model';
@@ -24,12 +25,14 @@ export class ProduitService {
   
 
   // Injection du service HttpClient pour effectuer des requêtes HTTP
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private authService:AuthService) {
   }
 
   // Méthode pour récupérer la liste des produits depuis l'API
   listeProduit(): Observable<Produit[]> {
-    return this.http.get<Produit[]>(apiURL + "/listProduit");
+    let jwt = this.authService.getToken();
+    let httpHeaders = new HttpHeaders({"Authorization":jwt})
+    return this.http.get<Produit[]>(apiURL + "/listProduit",{headers:httpHeaders});
   }
 
   // Méthode pour ajouter un produit via une requête POST à l'API

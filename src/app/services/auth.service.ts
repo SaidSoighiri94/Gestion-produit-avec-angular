@@ -9,15 +9,9 @@ import { HttpClient } from '@angular/common/http';
 })
 export class AuthService {
 
-  apiUrlUsers = 'htt://localhost:9001/user'
+  apiUrlUsers = 'http://localhost:8081/users'
   token!:string;
 
-  // Données en dure
-  /*users: User[] = [
-    { "username": "admin", "password": "123", "roles": ['ADMIN'] },
-    { "username": "mohamed", "password": "123", "roles": ['USER'] }
-  ];
-  */
   public loggedUser!: string;
   public isLoggedIn: Boolean = false;
   public roles!: string[];
@@ -26,7 +20,7 @@ export class AuthService {
 
   login(user : User){
     
-    return this.http.post<User>(apiURL+'/login',user,{observe:'response'});
+    return this.http.post<User>(this.apiUrlUsers+'/login',user,{observe:'response'});
   }
 
   saveToken(jwt:string){
@@ -35,24 +29,9 @@ export class AuthService {
     this.isLoggedIn = true;
   }
 
-
-  // Methode signIn permettant si l'utilisateur et mot de passe existent
-  /*SignIn(users: User): Boolean {
-    let validUser: Boolean = false;
-
-    // Recherche grace au foreach
-    this.users.forEach((curUser) => {
-      if (users.username === curUser.username && users.password === curUser.password) {
-        validUser = true;
-        this.loggedUser = curUser.username;
-        this.isLoggedIn = true;
-        this.roles = curUser.roles;
-        localStorage.setItem('loggedUser', this.loggedUser);
-        localStorage.setItem('isLoggedIn', String(this.isLoggedIn))
-      }
-    });
-    return validUser;
-  }*/
+  getToken():string {
+    return this.token;
+  }
 
   // Methode isAdmin permettant d'afficher l'ajout des produits si on est admin
   isAdmin():Boolean{
@@ -77,12 +56,5 @@ export class AuthService {
     this.isLoggedIn = true;
    // this.getUserRoles(login);
   }
-  /*getUserRoles(username : string){
-    this.users.forEach((curUser) => {
-      if(curUser.username == username){
-        this.roles =curUser.roles;
-      }
-    });
-  }*/
   
 }
