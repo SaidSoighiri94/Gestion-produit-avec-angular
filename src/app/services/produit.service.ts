@@ -31,6 +31,8 @@ export class ProduitService {
   // Méthode pour récupérer la liste des produits depuis l'API
   listeProduit(): Observable<Produit[]> {
     let jwt = this.authService.getToken();
+    jwt = "Bearer "+jwt;
+    //console.log(jwt);
     let httpHeaders = new HttpHeaders({"Authorization":jwt})
     return this.http.get<Produit[]>(apiURL + "/listProduit",{headers:httpHeaders});
   }

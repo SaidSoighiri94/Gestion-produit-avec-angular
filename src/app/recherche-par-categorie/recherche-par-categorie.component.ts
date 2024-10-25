@@ -5,7 +5,7 @@ import { ProduitService } from '../services/produit.service';
 
 @Component({
   selector: 'app-rcherche-par-categorie',
-  templateUrl: './recherche-par-categorie.component.html',
+  templateUrl:'./recherche-par-categorie.component.html',
   styles: [
   ]
 })

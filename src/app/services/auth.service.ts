@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { User } from '../model/user.model';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +12,7 @@ export class AuthService {
 
   apiUrlUsers = 'http://localhost:8081/users'
   token!:string;
+  private helper = new JwtHelperService();
 
   public loggedUser!: string;
   public isLoggedIn: Boolean = false;
@@ -27,6 +29,17 @@ export class AuthService {
     localStorage.setItem('jwt',jwt);
     this.token = jwt;
     this.isLoggedIn = true;
+    this.decodeJWT();
+  }
+
+  decodeJWT(){
+    if(this.token == undefined)
+      return;
+    const decodedToken = this.helper.decodeToken(this.token);
+    this.roles = decodedToken.roles;
+    this.loggedUser = decodedToken.sub;
+
+
   }
 
   getToken():string {
