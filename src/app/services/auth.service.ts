@@ -37,6 +37,7 @@ export class AuthService {
       return;
     const decodedToken = this.helper.decodeToken(this.token);
     this.roles = decodedToken.roles;
+    console.log("roles "+this.roles)
     this.loggedUser = decodedToken.sub;
 
 
